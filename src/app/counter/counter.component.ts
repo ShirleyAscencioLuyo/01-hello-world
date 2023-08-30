@@ -10,16 +10,28 @@ export class CounterComponent {
   activeDecrease = false;
 
   increase() {
-    // this.counter = this.counter + 1;
     this.counter++;
+    this.activeDecrease = false; 
   }
 
   decrease() {
-    // this.counter = this.counter - 1;
-    this.counter--;
+    if (this.counter > 0) {
+      this.counter--;
+    } else {
+      this.showAlert(); 
+    }
+
+   
+    if (this.counter === 0) {
+      this.activeDecrease = true;
+    }
   }
 
   inactiveDecrease() {
     this.activeDecrease = !this.activeDecrease;
+  }
+
+  showAlert() {
+    alert('El contador ya está en cero.');
   }
 }
